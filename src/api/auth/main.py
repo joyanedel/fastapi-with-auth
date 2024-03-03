@@ -4,6 +4,7 @@ from typing import Annotated
 
 from src.core.auth.schemas import Token
 from src.core.auth.login import authenticate_user
+from src.core.auth.tokens import create_token
 from src.core.auth.exceptions import AuthenticationFailed
 
 
@@ -23,7 +24,7 @@ async def login(form_data: Annotated[OAuth2PasswordRequestForm, Depends()]) -> T
 			headers={"WWW-Authenticate": "Bearer"},
 		) from exc
 
-	return Token(access_token="a", token_type="bearer")
+	return create_token({"sub": user.email})
 
 
 @router.post("/refresh-token")
