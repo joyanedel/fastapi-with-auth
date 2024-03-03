@@ -3,7 +3,7 @@ from typing import Optional
 
 
 class Guitar(SQLModel, table=True):
-	id: Optional[str] = Field(primary_key=True, default=None)
+	id: Optional[int] = Field(primary_key=True, default=None)
 	model: str
 	year: int
 	frets: int

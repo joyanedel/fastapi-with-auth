@@ -9,6 +9,7 @@ packages = [
 ]
 
 [tool.poetry.scripts]
+dev = "scripts.run:start"
 create-tables = "scripts.create_tables:create_db_and_tables"
 
 [tool.poetry.dependencies]
