@@ -3,7 +3,7 @@ from sqlmodel import Session
 
 from src.core.schemas.user import User
 from src.core.database.connection import engine
-from src.core.auth.passwords import get_hashed_password
+from src.core.auth.passwords import hash_password
 
 from .schemas import CreateUserRequest, CreateUserResponse
 
@@ -19,7 +19,7 @@ async def all():
 async def create(user_req: CreateUserRequest) -> CreateUserResponse:
 	with Session(engine) as session:
 		user = User(
-			hashed_password=get_hashed_password(user_req.password),
+			hashed_password=hash_password(user_req.password),
 			**user_req.model_dump(exclude=["password"]),
 		)
 
