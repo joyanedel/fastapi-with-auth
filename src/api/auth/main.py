@@ -3,14 +3,12 @@ from fastapi.security import OAuth2PasswordRequestForm
 from typing import Annotated
 
 from src.core.auth.schemas import Token
-from core.auth.auth import authenticate_user
+from src.core.auth.auth import authenticate_user
 from src.core.auth.tokens import create_token
 from src.core.auth.exceptions import AuthenticationFailed
 
 
 router = APIRouter(tags=["Authentication"])
-
-a = True
 
 
 @router.post("/login")

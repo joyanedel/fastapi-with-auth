@@ -11,7 +11,7 @@ from .passwords import verify_password
 from .exceptions import UserNotFound
 
 
-oauth2_schema = OAuth2PasswordBearer(tokenUrl="/login")
+oauth2_schema = OAuth2PasswordBearer(tokenUrl="/auth/login")
 
 
 def authenticate_user(email: str, password: str) -> User:
